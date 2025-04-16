@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anuj Verma | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #1a73e8;
+      --secondary: #ff4081;
+      --dark: #2d3748;
+      --light: #f7fafc;
+      --gray: #e2e8f0;
+      --dark-gray: #4a5568;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background-color: var(--light);
+      color: var(--dark);
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      left: -50px;
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+    }
+    
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: -80px;
+      right: -80px;
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+    }
+    
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+    
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+    }
+    
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+    }
+    
+    section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .container {
+      margin-bottom: 3rem;
+    }
+    
+    h2 {
+      color: var(--dark);
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+    
+    h3 {
+      color: var(--dark);
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 2rem;
+    }
+    
+    .profile-pic {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .profile-pic:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .about-text {
+      max-width: 800px;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    
+    .about-text p {
+      margin-bottom: 1.5rem;
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .project, .resource {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      border: 1px solid var(--gray);
+    }
+    
+    .project:hover, .resource:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary);
+    }
+    
+    .project h3 {
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    
+    .project h3 i {
+      font-size: 1.5rem;
+    }
+    
+    pre {
+      background-color: #f8f8f8;
+      padding: 1.5rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95rem;
+      margin: 1.5rem 0;
+      border: 1px solid var(--gray);
+      position: relative;
+    }
+    
+    pre::before {
+      content: "Python";
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--primary);
+      color: white;
+      padding: 0.2rem 0.8rem;
+      font-size: 0.8rem;
+      border-radius: 0 0 0 8px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .resource h3 {
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    
+    .resource h3 i {
+      font-size: 1.5rem;
+    }
+    
+    .resource ul {
+      list-style-type: none;
+    }
+    
+    .resource li {
+      margin-bottom: 1rem;
+      position: relative;
+      padding-left: 1.8rem;
+    }
+    
+    .resource li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    .resource a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .resource a:hover {
+      color: var(--secondary);
+      text-decoration: underline;
+    }
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .contact-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      text-align: center;
+      border: 1px solid var(--gray);
+    }
+    
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      border-color: var(--secondary);
+    }
+    
+    .contact-card i {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-card h3 {
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+    
+    .contact-card a {
+      color: var(--dark-gray);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .contact-card a:hover {
+      color: var(--secondary);
+    }
+    
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 2.5rem 1rem;
+      margin-top: 3rem;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: var(--secondary);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+    
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      
+      nav {
+        gap: 1rem;
+      }
+      
+      nav a {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+      }
+      
+      section {
+        padding: 3rem 1.5rem;
+      }
+      
+      .projects-grid, .resources-grid, .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .container {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    
+    .container:nth-child(2) { animation-delay: 0.1s; }
+    .container:nth-child(3) { animation-delay: 0.2s; }
+    .container:nth-child(4) { animation-delay: 0.3s; }
+    .container:nth-child(5) { animation-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <h1>Anuj Verma</h1>
+    <nav>
+      <a href="#about"><i class="fas fa-user"></i> About</a>
+      <a href="#projects"><i class="fas fa-code"></i> Projects</a>
+      <a href="#ca-preparation"><i class="fas fa-book"></i> CA Resources</a>
+      <a href="#python-resources"><i class="fab fa-python"></i> Python Resources</a>
+      <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+  </header>
+
+  <!-- About Section -->
+  <section class="container" id="about">
+    <h2>About Me</h2>
+    <div class="profile-container">
+      <img src="https://i.ibb.co/6ckmpMYT/Beauty-Plus-20240708120505531-save.jpg" alt="Anuj Verma" class="profile-pic">
+      <div class="about-text">
+        <p>Hello! I'm Anuj Verma. I specialize in Python programming and am currently preparing for my Chartered Accountancy (CA) exams. I am passionate about coding and problem-solving, and I enjoy exploring finance-related topics.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="container" id="projects">
+    <h2>Python Projects</h2>
+    <div class="projects-grid">
+      <div class="project">
+        <h3><i class="fas fa-calculator"></i> Prime Number Checker</h3>
+        <pre><code>num = int(input("Enter a number: "))
+if num > 1:
+    for i in range(2, num):
+        if (num % i) == 0:
+            print(num, "is not a prime number")
+            break
+    else:
+        print(num, "is a prime number")
+else:
+    print(num, "is not a prime number")</code></pre>
+      </div>
+
+      <div class="project">
+        <h3><i class="fas fa-square-root-alt"></i> Composite Number Checker</h3>
+        <pre><code>num = int(input("Enter a number: "))
+if num > 1:
+    for i in range(2, num):
+        if (num % i) == 0:
+            print(num, "is a composite number")
+            break
+    else:
+        print(num, "is not a composite number")
+else:
+    print(num, "is not a composite number")</code></pre>
+      </div>
+
+      <div class="project">
+        <h3><i class="fas fa-exclamation"></i> Factorial Calculator</h3>
+        <pre><code>num = int(input("Enter a number: "))
+factorial = 1
+if num >= 0:
+    for i in range(1, num + 1):
+        factorial *= i
+    print("Factorial:", factorial)
+else:
+    print("Invalid input")</code></pre>
+      </div>
+
+      <div class="project">
+        <h3><i class="fas fa-font"></i> Vowel Checker</h3>
+        <pre><code>char = input("Enter a character: ").lower()
+if char in 'aeiou':
+    print(char, "is a vowel")
+else:
+    print(char, "is not a vowel")</code></pre>
+      </div>
+
+      <div class="project">
+        <h3><i class="fas fa-plus-minus"></i> Number Sign Checker</h3>
+        <pre><code>num = int(input("Enter a number: "))
+if num > 0:
+    print(num, "is positive")
+elif num < 0:
+    print(num, "is negative")
+else:
+    print(num, "is zero")</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- CA Preparation Resources Section -->
+  <section class="container" id="ca-preparation">
+    <h2>CA Preparation Resources</h2>
+    <p>Here are some useful resources to help you in your Chartered Accountancy (CA) journey.</p>
+    
+    <div class="resources-grid">
+      <div class="resource">
+        <h3><i class="fas fa-file-alt"></i> Study Materials</h3>
+        <ul>
+          <li><a href="https://www.icai.org" target="_blank">ICAI - Official Website</a></li>
+          <li><a href="https://www.surana.com" target="_blank">Surana & Surana</a></li>
+          <li><a href="https://www.indiacareers360.com/ca-study-material" target="_blank">India Careers 360</a></li>
+        </ul>
+      </div>
+
+      <div class="resource">
+        <h3><i class="fab fa-youtube"></i> YouTube Channels</h3>
+        <ul>
+          <li><a href="https://www.youtube.com/c/CAVivekAgarwal" target="_blank">CA Vivek Agarwal</a></li>
+          <li><a href="https://www.youtube.com/c/CAPraveen" target="_blank">CA Praveen</a></li>
+          <li><a href="https://www.youtube.com/c/Unacademy" target="_blank">Unacademy - CA Courses</a></li>
+        </ul>
+      </div>
+
+      <div class="resource">
+        <h3><i class="fas fa-lightbulb"></i> Exam Tips</h3>
+        <ul>
+          <li><strong>Start Early:</strong> Begin your preparation well in advance.</li>
+          <li><strong>Study Plan:</strong> Make a solid timetable for effective time management.</li>
+          <li><strong>Mock Tests:</strong> Practice mock tests regularly.</li>
+          <li><strong>Revision:</strong> Revise your subjects consistently for better retention.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Python Resources Section -->
+  <section class="container" id="python-resources">
+    <h2>Python Resources</h2>
+    <p>Here are some valuable resources for learning Python.</p>
+    
+    <div class="resources-grid">
+      <div class="resource">
+        <h3><i class="fas fa-graduation-cap"></i> Free Online Python Courses</h3>
+        <ul>
+          <li><a href="https://www.learnpython.org/" target="_blank">Learn Python (Free)</a></li>
+          <li><a href="https://www.codecademy.com/learn/learn-python-3" target="_blank">Codecademy - Python 3</a></li>
+          <li><a href="https://www.edx.org/course/introduction-to-computer-science-and-programming-7" target="_blank">Harvard's CS50 - Free Python Course</a></li>
+        </ul>
+      </div>
+
+      <div class="resource">
+        <h3><i class="fas fa-book"></i> Official Python Documentation</h3>
+        <ul>
+          <li><a href="https://docs.python.org/3/" target="_blank">Official Python Docs</a></li>
+          <li><a href="https://www.learnpython.org/" target="_blank">Learn Python</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="container" id="contact">
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <i class="fas fa-phone-alt"></i>
+        <h3>Phone</h3>
+        <a href="tel:+919569582693">+91 95695 82693</a>
+      </div>
+      
+      <div class="contact-card">
+        <i class="fas fa-envelope"></i>
+        <h3>Email</h3>
+        <a href="mailto:anujverma6426@gmail.com">anujverma6426@gmail.com</a>
+      </div>
+      
+      <div class="contact-card">
+        <i class="fab fa-instagram"></i>
+        <h3>Instagram</h3>
+        <a href="https://www.instagram.com/anuj_verma08" target="_blank">@anuj_verma08</a>
+      </div>
+      
+      <div class="contact-card">
+        <i class="fab fa-facebook"></i>
+        <h3>Facebook</h3>
+        <a href="https://www.facebook.com/share/18a26b3SnZ/" target="_blank">Facebook Profile</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://www.instagram.com/anuj_verma08" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/share/18a26b3SnZ/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="mailto:anujverma6426@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="tel:+919569582693"><i class="fas fa-phone-alt"></i></a>
+      </div>
+      <p class="copyright">&copy; 2025 Anuj Verma. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
